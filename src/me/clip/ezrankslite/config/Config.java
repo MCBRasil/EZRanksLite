@@ -51,12 +51,6 @@ public class Config {
 				Arrays.asList(new String[] { "none" }));
 		config.addDefault("rankup_cooldown.enabled", true);
 		config.addDefault("rankup_cooldown.time", 5);
-		if (config.contains("scoreboard.text")) {
-			config.set("scoreboard.text", null);
-		}
-		if (config.contains("check_updates")) {
-			config.set("check_updates", null);
-		}
 		config.addDefault("scoreboard.enabled", true);
 		config.addDefault("scoreboard.refresh_time", 30);
 		config.addDefault("scoreboard.title", "&cScoreboard");
@@ -81,11 +75,6 @@ public class Config {
 		config.addDefault("check_updates", true);
 		config.options().copyDefaults(true);
 		plugin.saveConfig();
-	}
-	
-	
-	public boolean checkUpdates() {
-			return plugin.getConfig().getBoolean("check_updates");
 	}
 	
 	public String getProgressBarEndColor() {

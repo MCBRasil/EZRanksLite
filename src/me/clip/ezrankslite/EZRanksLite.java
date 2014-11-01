@@ -44,7 +44,6 @@ import me.clip.ezrankslite.scoreboard.PlaceHolderHandler;
 import me.clip.ezrankslite.scoreboard.ScoreboardIntervalTask;
 import me.clip.ezrankslite.scoreboard.ScoreboardHandler;
 import me.clip.ezrankslite.scoreboard.ScoreboardOptions;
-import me.clip.ezrankslite.updater.Updater;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -111,7 +110,6 @@ public class EZRanksLite extends JavaPlugin {
 	
 	private static boolean useSQLPerms;
 	
-	private Updater spigotUpdater = null;
 	
 	private static boolean checkUpdates;
 	
@@ -169,17 +167,6 @@ public class EZRanksLite extends JavaPlugin {
 		
 		instance = this;
 		
-		checkUpdates = config.checkUpdates();
-		
-		if (checkUpdates) {
-			spigotUpdater = new Updater(this);
-			if (spigotUpdater.checkUpdate()) {
-				getLogger().info("An update for EZRanksLite (EZRanksLite v"+Updater.getLatestVersion()+") is available at http://www.spigotmc.org/resources/ezrankslite.762/");
-			}
-			else {
-				getLogger().info("You are running the latest version of EZRanksLite!");
-			}
-		}
 
 	}
 
@@ -288,6 +275,10 @@ public class EZRanksLite extends JavaPlugin {
 		return rankhandler;
 	}
 
+	/**
+	 * Playerhandler holds methods to rankup/reset players
+	 * @return playerhandler
+	 */
 	public PlayerRankupHandler getPlayerhandler() {
 		return playerhandler;
 	}
@@ -502,14 +493,15 @@ public class EZRanksLite extends JavaPlugin {
 		return hooks;
 	}
 	
+	
 	public boolean checkUpdates() {
 		return checkUpdates;
 	}
 	
-	public Updater getUpdater() {
-		return spigotUpdater;
-	}
-
+	/**
+	 * get the EZRanksLite instance
+	 * @return instance
+	 */
 	public static EZRanksLite i() {
 		return instance;
 	}

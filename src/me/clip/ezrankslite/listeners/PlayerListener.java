@@ -20,7 +20,6 @@
 package me.clip.ezrankslite.listeners;
 
 import me.clip.ezrankslite.EZRanksLite;
-import me.clip.ezrankslite.updater.Updater;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -44,19 +43,6 @@ public class PlayerListener implements Listener {
 
 		Player p = e.getPlayer();
 
-		if (p.hasPermission("ezranks.admin")) {
-			
-			if (plugin.checkUpdates() && plugin.getUpdater() != null) {
-				
-				if (Updater.updateAvailable()) {
-					
-					plugin.sms(p, "&aAn update is available for EZRanksLite (&fEZRanksLite "
-									+ Updater.getLatestVersion() + "&a)");
-					plugin.sms(p, "&aat &fhttp://bit.ly/1sljFdb");
-				}
-
-			}
-		}
 
 		if (!plugin.useScoreboard()) {
 			return;
